@@ -177,7 +177,6 @@ python scripts/audit_career_delivery.py delivery-manifest.json
 
 候选人材料默认留在本地。请不要将项目细节、内部数据或公司保密内容上传给 AI。
 
-保密经历只抽象到这个层级：问题类型、个人职责边界、约束条件、技术取舍、验证方法、泛化结果。不要要求源码、内部数据、日志、模型权重、客户身份、未公开算法或内部敏感指标。
 
 ## License
 

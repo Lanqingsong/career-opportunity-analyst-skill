@@ -181,4 +181,4 @@ python scripts/audit_career_delivery.py delivery-manifest.json
 
 ## License
 
-Apache-2.0.   帮我写一份标准的非常符合大众审美的英文readme
+Apache-2.0. 

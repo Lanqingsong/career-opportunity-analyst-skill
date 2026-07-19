@@ -172,6 +172,30 @@ python scripts/audit_career_delivery.py delivery-manifest.json
 
 The scripts check structure and evidence rules. They do not replace human judgment.
 
+## Push Helper
+
+If the GitHub remote already has new commits, a plain `git push` may stop at a rebase conflict or detached HEAD state. This repository includes a Windows push helper for common cases:
+
+- Adds the repository to Git `safe.directory`.
+- Checks rebase and conflict state.
+- Commits current local changes.
+- Fetches the remote branch and rebases local commits on top of it.
+- Pushes to `origin/main`.
+
+Run from the repository root:
+
+```powershell
+.\push.cmd
+```
+
+With a custom commit message:
+
+```powershell
+.\push.cmd -Message "docs: update readme"
+```
+
+If there is a real content conflict, the helper stops and lists the conflicted files. Fix them manually, then run `.\push.cmd` again.
+
 ## Privacy
 
 Candidate material stays local by default. Please do not upload project details, internal data, or confidential company material to AI services.

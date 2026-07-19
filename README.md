@@ -172,6 +172,30 @@ python scripts/audit_career_delivery.py delivery-manifest.json
 
 脚本只检查结构和证据约束，不能替代人的判断。
 
+## 推送工具
+
+如果 GitHub 远端已经有新提交，直接 `git push` 可能会遇到 rebase 冲突或游离 HEAD。仓库里提供了一个 Windows 推送工具，用来处理常见步骤：
+
+- 自动加入 Git `safe.directory`。
+- 检查是否处在 rebase 或冲突状态。
+- 自动提交当前改动。
+- 拉取远端最新状态并把本地提交接到远端之后。
+- 推送到 `origin/main`。
+
+在仓库根目录运行：
+
+```powershell
+.\push.cmd
+```
+
+指定提交信息：
+
+```powershell
+.\push.cmd -Message "docs: update readme"
+```
+
+如果遇到真实内容冲突，工具会停下来列出冲突文件。先手动解决冲突，再重新运行 `.\push.cmd`。
+
 ## 隐私边界
 
 候选人材料默认留在本地。请不要将项目细节、内部数据或公司保密内容上传给 AI。

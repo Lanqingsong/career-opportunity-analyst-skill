@@ -6,16 +6,19 @@ A Codex Skill for evidence-grounded career opportunity analysis. It turns job CS
 
 ## Recommended Upstream Tool
 
-Use [Lanqingsong/job-page-extractor](https://github.com/Lanqingsong/job-page-extractor) first to collect job pages and export them as CSV/JSON.
+Recommended upstream tool: the Chrome extension [Lanqingsong/job-page-extractor](https://github.com/Lanqingsong/job-page-extractor).
+
+This is not meant to blindly bulk-scrape every job page. The intended workflow is human-in-the-loop: while browsing job boards, the user adds personally interesting roles to a candidate pool through the Chrome extension, then exports that candidate pool as CSV/JSON. This Skill then handles the career analysis, opportunity screening, resume-version planning, interview preparation, and 30/90/180-day growth plan.
 
 Recommended workflow:
 
-1. Use `job-page-extractor` to collect or organize job pages.
-2. Export a job file such as `jobs.csv` or `jobs.json`.
-3. Provide the job file, resume, candidate notes, preferences, and confidentiality boundaries to `$analyze-career-opportunities`.
-4. Let this Skill produce target directions, shortlisted roles, resume-version planning, interview material, and a growth plan.
+1. Browse job boards normally.
+2. When a role looks interesting, add it to the candidate pool with the `job-page-extractor` Chrome extension.
+3. Export the candidate roles as CSV/JSON.
+4. Provide the job file, resume, candidate notes, preferences, and confidentiality boundaries to `$analyze-career-opportunities`.
+5. Let this Skill produce target directions, shortlisted roles, resume-version planning, interview material, and a growth plan.
 
-The Skill can also read ordinary CSV/JSON job tables that were not produced by `job-page-extractor`, as long as the fields contain enough title, company, location, responsibility, requirement, and source information.
+The Chrome extension is optional. Users can also create a job CSV manually. Start from [assets/job-input-template.csv](assets/job-input-template.csv) for the simplest compatible format.
 
 ## Skill Invocation Name
 
@@ -82,7 +85,8 @@ When the input material supports a complete package, the Skill produces:
 
 ## Key Features
 
-- Supports job CSV/JSON exports from `job-page-extractor` and ordinary job tables.
+- Supports candidate-role CSV/JSON exports from the `job-page-extractor` Chrome extension and manually prepared job tables.
+- Provides a minimal CSV input format so users can prepare job material without the extension.
 - Treats resumes as optional; candidate notes, project material, portfolio links, preferences, and corrections are first-class inputs.
 - Clusters jobs by responsibility and capability patterns rather than title alone.
 - Researches only shortlisted companies to avoid unnecessary investigation.
@@ -104,6 +108,8 @@ When the input material supports a complete package, the Skill produces:
 |-- LICENSE
 |-- agents/
 |-- assets/
+|   |-- job-input-template.csv
+|   `-- report-template.md
 |-- references/
 `-- scripts/
 ```
@@ -142,19 +148,52 @@ Then start a new Codex task.
 
 ### 1. Prepare Job Data
 
-Use [Lanqingsong/job-page-extractor](https://github.com/Lanqingsong/job-page-extractor) to convert job pages into CSV/JSON. Common fields may include:
+There are two ways to prepare the job input.
 
-- company
-- title
-- location
-- salary
-- responsibilities
-- requirements
-- source_url
-- published_at
-- notes
+Option A: Use the Chrome extension
 
-Field names do not need to match exactly. The Skill begins by mapping fields and checking input quality.
+1. Install and open [Lanqingsong/job-page-extractor](https://github.com/Lanqingsong/job-page-extractor).
+2. Browse job boards normally.
+3. Add personally interesting roles to the candidate pool through the extension.
+4. Export the candidate roles as CSV/JSON.
+5. Provide the exported file to `$analyze-career-opportunities`.
+
+Option B: Create CSV manually
+
+The minimum CSV needs only three columns:
+
+```csv
+job_id,title,company_name
+job-001,AI Product Manager,Example Tech
+```
+
+For better analysis, use the full header from [assets/job-input-template.csv](assets/job-input-template.csv):
+
+```csv
+job_id,title,company_name,city,source_platform,source_url,collected_at,salary_min,salary_max,salary_period,experience_min,experience_max,education,responsibilities,required_skills,preferred_skills,description_raw,company_text_raw,notes
+```
+
+Field guide:
+
+- `job_id`: Unique role ID. Required. Use values like `job-001`, `job-002`.
+- `title`: Role title. Required.
+- `company_name`: Company name. Required.
+- `city`: Work location.
+- `source_platform`: Source platform, such as BOSS, Lagou, Liepin, LinkedIn, or company website.
+- `source_url`: Job posting URL.
+- `collected_at`: Collection date. Prefer `YYYY-MM-DD`.
+- `salary_min` / `salary_max`: Salary lower and upper bounds.
+- `salary_period`: Salary period, such as `month`, `year`, or `day`.
+- `experience_min` / `experience_max`: Experience requirement in years.
+- `education`: Education requirement.
+- `responsibilities`: Main responsibilities.
+- `required_skills`: Must-have skills or hard requirements.
+- `preferred_skills`: Nice-to-have skills.
+- `description_raw`: Original JD text.
+- `company_text_raw`: Company description copied from the job page.
+- `notes`: Personal notes, such as "very interested", "salary unclear", or "long commute".
+
+Field names do not need to match exactly. The Skill begins by mapping fields and checking input quality. For fewer mistakes, use the English headers above.
 
 ### 2. Prepare Candidate Material
 

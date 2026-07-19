@@ -15,6 +15,7 @@ build/
 *.xlsx
 *.xls
 *.csv
+!assets/job-input-template.csv
 *.tsv
 *.sqlite
 *.sqlite3

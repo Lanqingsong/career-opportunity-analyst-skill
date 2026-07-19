@@ -12,18 +12,27 @@ from typing import Any
 
 
 ALIASES = {
-    "title": ["岗位", "职位", "岗位名称", "title", "job_title", "position", "role"],
-    "company_name": ["公司", "企业", "公司名称", "company", "company_name", "employer"],
+    "job_id": ["编号", "岗位编号", "职位编号", "job_id", "id", "role_id"],
+    "title": ["岗位", "职位", "岗位名称", "职位名称", "title", "job_title", "position", "role"],
+    "company_name": ["公司", "企业", "公司名称", "企业名称", "company", "company_name", "employer"],
     "city": ["城市", "地点", "工作地点", "location", "city", "work_place"],
-    "description_raw": ["jd", "岗位描述", "职位描述", "description", "detail", "job_description"],
-    "required_skills": ["要求", "任职要求", "required_skills", "requirements", "must_have"],
-    "preferred_skills": ["加分项", "优先", "preferred_skills", "nice_to_have"],
+    "source_platform": ["来源平台", "平台", "source_platform", "platform", "source"],
+    "source_url": ["链接", "url", "source_url", "job_url"],
+    "collected_at": ["收集时间", "采集时间", "收藏时间", "collected_at", "saved_at"],
     "salary_min": ["最低薪资", "salary_min", "min_salary"],
     "salary_max": ["最高薪资", "salary_max", "max_salary"],
+    "salary_period": ["薪资周期", "salary_period", "period"],
     "salary": ["薪资", "工资", "salary", "compensation"],
+    "experience_min": ["最低经验", "经验下限", "experience_min", "min_experience"],
+    "experience_max": ["最高经验", "经验上限", "experience_max", "max_experience"],
     "experience": ["经验", "工作经验", "experience", "years_experience"],
     "education": ["学历", "education", "degree"],
-    "source_url": ["链接", "url", "source_url", "job_url"],
+    "responsibilities": ["职责", "岗位职责", "工作内容", "responsibilities", "duties"],
+    "description_raw": ["jd", "岗位描述", "职位描述", "description", "detail", "job_description", "description_raw"],
+    "required_skills": ["要求", "任职要求", "必备技能", "required_skills", "requirements", "must_have"],
+    "preferred_skills": ["加分项", "优先", "preferred_skills", "nice_to_have"],
+    "company_text_raw": ["公司介绍", "企业介绍", "company_text_raw", "company_description"],
+    "notes": ["备注", "个人备注", "notes", "user_notes"],
 }
 REQUIRED = {"title", "company_name"}
 

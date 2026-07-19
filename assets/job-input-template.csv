@@ -1,0 +1,3 @@
+job_id,title,company_name,city,source_platform,source_url,collected_at,salary_min,salary_max,salary_period,experience_min,experience_max,education,responsibilities,required_skills,preferred_skills,description_raw,company_text_raw,notes
+job-001,AI产品经理,示例科技,上海,公司官网,https://example.com/jobs/001,2026-07-19,25000,40000,month,3,5,本科,"负责AI产品规划、需求分析、跨团队协作和上线效果评估","AI产品经验;数据分析;需求文档;跨部门沟通","大模型应用经验;B端产品经验","这里粘贴岗位原始JD文本","这里粘贴岗位页中的公司介绍","很感兴趣，重点看AI产品和业务落地"
+job-002,算法工程师,示例智能,深圳,BOSS直聘,https://example.com/jobs/002,2026-07-19,30000,50000,month,3,8,硕士,"负责模型训练、评估、部署和性能优化","Python;机器学习;深度学习;模型部署","多模态经验;工程化经验","这里粘贴岗位原始JD文本","这里粘贴岗位页中的公司介绍","技能匹配度较高，需确认业务方向"

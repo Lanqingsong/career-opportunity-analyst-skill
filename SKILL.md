@@ -1,6 +1,6 @@
 ---
 name: analyze-career-opportunities
-description: "Turn job CSV/JSON or job-page-extractor exports plus a resume, free-form introduction, project materials, portfolio links, preferences, or corrections into an evidence-grounded career delivery package: candidate profile, market and role clusters, suitable directions, shortlisted opportunities, minimum tailored resume set, interview evidence preparation, and executable 30/90/180-day improvement plan. Use for job selection, career-direction analysis, resume targeting or rewriting, interview preparation, capability-gap assessment, and career learning plans. Research shortlisted companies with Codex's built-in web tools without asking the user to configure a search API."
+description: "Turn job CSV/JSON, manually prepared job tables, or candidate-role exports from the job-page-extractor Chrome extension plus a resume, free-form introduction, project materials, portfolio links, preferences, or corrections into an evidence-grounded career delivery package: candidate profile, market and role clusters, suitable directions, shortlisted opportunities, minimum tailored resume set, interview evidence preparation, and executable 30/90/180-day improvement plan. Use for job selection, career-direction analysis, resume targeting or rewriting, interview preparation, capability-gap assessment, and career learning plans. Research shortlisted companies with Codex's built-in web tools without asking the user to configure a search API."
 ---
 
 # Analyze Career Opportunities
@@ -36,7 +36,7 @@ Produce these outputs when the available material supports them:
 
 ### 1. Inventory and normalize inputs
 
-Record every input source and disclosure boundary. Prefer `job-page-extractor` exports. For generic CSV/JSON, map headers and report uncertain mappings; never silently discard salary, location, experience, education, description, company, or source URL fields.
+Record every input source and disclosure boundary. Treat `job-page-extractor` as a Chrome extension that exports roles the user has personally added to a candidate pool. Also accept manually prepared CSV/JSON files; map headers and report uncertain mappings. Never silently discard salary, location, experience, education, description, company, source URL, or user-note fields.
 
 Run `scripts/profile_job_input.py` for unfamiliar or large job files. Read `references/schemas.md` for field aliases and fact statuses.
 

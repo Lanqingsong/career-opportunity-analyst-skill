@@ -6,16 +6,19 @@
 
 ## 推荐前置工具
 
-建议先使用岗位采集工具 [Lanqingsong/job-page-extractor](https://github.com/Lanqingsong/job-page-extractor) 批量读取招聘页面，并导出岗位 CSV/JSON。
+推荐配合 Chrome 浏览器插件 [Lanqingsong/job-page-extractor](https://github.com/Lanqingsong/job-page-extractor) 使用。
+
+它不是要求用户一次性批量抓取全网岗位，而是用于用户浏览招聘网站时，把自己感兴趣的岗位纳入候选池，并导出候选岗位 CSV/JSON。这样可以先由人完成“我对哪些岗位有兴趣”的选择，再由本 Skill 完成职业判断、简历版本规划和面试准备。
 
 推荐工作流：
 
-1. 用 `job-page-extractor` 抓取或整理招聘页面。
-2. 导出岗位文件，例如 `jobs.csv` 或 `jobs.json`。
-3. 把岗位文件、简历、补充介绍、偏好条件和保密边界一起交给 `$analyze-career-opportunities`。
-4. 由本 Skill 完成职业方向判断、岗位筛选、简历版本规划、面试材料和成长计划。
+1. 用户在招聘网站正常浏览岗位。
+2. 遇到感兴趣的岗位时，用 `job-page-extractor` Chrome 插件加入候选池。
+3. 从插件导出候选岗位 CSV/JSON。
+4. 把岗位文件、简历、补充介绍、偏好条件和保密边界一起交给 `$analyze-career-opportunities`。
+5. 由本 Skill 完成职业方向判断、岗位筛选、简历版本规划、面试材料和 30/90/180 天提升计划。
 
-本 Skill 也可以读取不是由 `job-page-extractor` 生成的普通 CSV/JSON 岗位表，只要字段中包含足够的岗位名称、公司、地点、职责、要求和来源信息。
+不使用插件也可以。你可以手工整理一个岗位 CSV，推荐从 [assets/job-input-template.csv](assets/job-input-template.csv) 复制表头。
 
 ## Skill 调用名称
 
@@ -73,7 +76,8 @@ disallowed
 
 ## 项目特点
 
-- 支持 `job-page-extractor` 导出的岗位 CSV/JSON，也支持普通岗位表格。
+- 支持 `job-page-extractor` Chrome 插件导出的候选岗位 CSV/JSON，也支持用户手工整理的岗位表格。
+- 提供最小 CSV 输入格式，用户不依赖插件也能快速准备岗位资料。
 - 不只依赖简历；补充介绍、项目材料、作品链接、偏好条件和修正信息都可以作为输入。
 - 按职责和能力模式聚类岗位，而不是只按岗位标题归类。
 - 只对进入候选范围的公司做公开资料核查，减少无效研究。
@@ -95,6 +99,8 @@ disallowed
 |-- LICENSE
 |-- agents/
 |-- assets/
+|   |-- job-input-template.csv
+|   `-- report-template.md
 |-- references/
 `-- scripts/
 ```
@@ -133,19 +139,52 @@ cp -R career-opportunity-analyst-skill/* ~/.codex/skills/analyze-career-opportun
 
 ### 1. 准备岗位数据
 
-推荐使用 [Lanqingsong/job-page-extractor](https://github.com/Lanqingsong/job-page-extractor) 把招聘页面整理成 CSV/JSON。常见字段可以包括：
+有两种方式。
 
-- company / 公司
-- title / 岗位名称
-- location / 地点
-- salary / 薪资
-- responsibilities / 职责
-- requirements / 要求
-- source_url / 来源链接
-- published_at / 发布时间
-- notes / 备注
+方式 A：使用 Chrome 插件
 
-字段名不必完全一致。本 Skill 会先做字段映射和输入质量检查。
+1. 安装并打开 [Lanqingsong/job-page-extractor](https://github.com/Lanqingsong/job-page-extractor)。
+2. 正常浏览招聘网站。
+3. 对自己感兴趣的岗位，用插件加入候选池。
+4. 从插件导出候选岗位 CSV/JSON。
+5. 把导出的文件交给 `$analyze-career-opportunities`。
+
+方式 B：手工准备 CSV
+
+最简单的岗位 CSV 只需要三列：
+
+```csv
+job_id,title,company_name
+job-001,AI产品经理,示例科技
+```
+
+更推荐使用下面的完整表头，复制自 [assets/job-input-template.csv](assets/job-input-template.csv)：
+
+```csv
+job_id,title,company_name,city,source_platform,source_url,collected_at,salary_min,salary_max,salary_period,experience_min,experience_max,education,responsibilities,required_skills,preferred_skills,description_raw,company_text_raw,notes
+```
+
+字段说明：
+
+- `job_id`：岗位唯一编号，必填。可以自己写 `job-001`、`job-002`。
+- `title`：岗位名称，必填。
+- `company_name`：公司名称，必填。
+- `city`：工作城市。
+- `source_platform`：来源平台，例如 BOSS、拉勾、猎聘、LinkedIn、官网。
+- `source_url`：岗位链接。
+- `collected_at`：收集日期，建议使用 `YYYY-MM-DD`。
+- `salary_min` / `salary_max`：薪资下限和上限。
+- `salary_period`：薪资周期，例如 `month`、`year`、`day`。
+- `experience_min` / `experience_max`：经验年限要求。
+- `education`：学历要求。
+- `responsibilities`：岗位职责。
+- `required_skills`：必备技能或硬性要求。
+- `preferred_skills`：加分项。
+- `description_raw`：原始 JD 文本。
+- `company_text_raw`：岗位页里的公司介绍文本。
+- `notes`：你的个人备注，例如“很感兴趣”“薪资不明确”“通勤较远”。
+
+字段名不必完全一致。本 Skill 会先做字段映射和输入质量检查。但为了减少误判，建议优先使用上面的英文表头。
 
 ### 2. 准备候选人材料
 

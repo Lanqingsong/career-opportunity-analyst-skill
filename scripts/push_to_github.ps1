@@ -31,6 +31,12 @@ function Get-GitText {
     return @($output)
 }
 
+function Get-ItemCount {
+    param([AllowNull()][object]$Items)
+
+    return @($Items).Count
+}
+
 function Get-GitDir {
     $gitDir = (Get-GitText @("rev-parse", "--git-dir") | Select-Object -First 1)
     if ([System.IO.Path]::IsPathRooted($gitDir)) {
@@ -76,7 +82,7 @@ function New-NoopEditor {
 function Continue-RebaseIfNeeded {
     while (Test-RebaseInProgress) {
         $unmerged = Get-UnmergedFiles
-        if ($unmerged.Count -gt 0) {
+        if ((Get-ItemCount $unmerged) -gt 0) {
             Stop-WithConflictHelp $unmerged
         }
 
@@ -118,12 +124,12 @@ function Commit-WorkingTreeIfNeeded {
     }
 
     $changes = @(Get-GitText @("status", "--porcelain") | Where-Object { $_ })
-    if ($changes.Count -eq 0) {
+    if ((Get-ItemCount $changes) -eq 0) {
         return
     }
 
     $unmerged = Get-UnmergedFiles
-    if ($unmerged.Count -gt 0) {
+    if ((Get-ItemCount $unmerged) -gt 0) {
         Stop-WithConflictHelp $unmerged
     }
 

@@ -1,13 +1,38 @@
 # Company Research Reference
 
+## Principle
+
+Company due diligence is a first gate, not an optional appendix after role ranking. A local agent should actively research companies with public sources instead of asking the user to do the background check.
+
+The goal is not to write a long company profile. The goal is to decide whether the company deserves the user's time, whether the role is close to real business, and what risks or unknowns should affect application priority.
+
 ## Research sequence
 
-1. Resolve identity using the legal or full company name, city, industry, official domain, and the hiring entity. Keep ambiguous entities separate.
-2. Search the official website, investor or regulatory material, product pages, and official recruitment pages.
-3. Search independent reporting for financing, financial or operating changes, layoffs, litigation, penalties, product adoption, and industry position.
-4. Open the pages and record the exact claim each page supports. Do not rely on a search snippet alone.
-5. Compare the job with the company's products and growth direction. Distinguish a core product role from internal support, delivery, outsourcing, or speculative hiring.
-6. Audit coverage before assigning confidence.
+1. Resolve company identity using legal or full company name, city, industry, official domain, hiring entity, and source platform. Keep ambiguous entities separate.
+2. Run a first-gate check for every company in the user's candidate pool:
+   - identity clarity;
+   - business or product clarity;
+   - hiring entity versus work entity;
+   - obvious public risk signals;
+   - whether the job appears close to core business.
+3. Deep-research high-interest, high-fit, unclear, or risky companies before final ranking.
+4. Search official website, investor or regulatory material, product pages, and official recruitment pages.
+5. Search independent reporting for financing, financial or operating changes, layoffs, litigation, penalties, product adoption, and industry position.
+6. Open pages and record the exact claim each page supports. Do not rely on a search snippet alone.
+7. Compare the job with the company's products and growth direction. Distinguish core product work from internal support, delivery, outsourcing, or speculative hiring.
+8. Audit coverage before assigning confidence.
+
+## First-gate labels
+
+Use these labels before detailed role matching:
+
+- `pass`: company identity and basic business are clear; no obvious blocking risk found.
+- `watch`: company may be viable, but there are important unknowns or weak source coverage.
+- `deprioritize`: company is real but risk, business mismatch, role ambiguity, or preference conflict makes it lower priority.
+- `block`: company identity, hiring entity, legal/risk issue, or user hard filter makes it inappropriate unless the user explicitly overrides.
+- `incomplete`: public information is not enough to judge.
+
+Never turn missing information into a negative fact. Use `incomplete` or `watch` when evidence is weak.
 
 ## Query plan
 
@@ -42,7 +67,7 @@ For a high-confidence company conclusion require:
 - a publication date for time-sensitive claims;
 - a written claim-to-source mapping.
 
-If these conditions fail, set research status to `incomplete`, confidence to `low`, and state the missing evidence. Never turn missing information into a negative company fact.
+If these conditions fail, set research status to `incomplete`, confidence to `low`, and state the missing evidence.
 
 ## Source ledger schema
 
@@ -50,6 +75,7 @@ If these conditions fail, set research status to `incomplete`, confidence to `lo
 {
   "company_name": "Full company name",
   "identity_status": "resolved",
+  "first_gate": "pass",
   "sources": [
     {
       "title": "Page title",

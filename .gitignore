@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Local/private user material. Do not publish career inputs or generated private reports.
+*.docx
+*.pdf
+*.xlsx
+*.xls
+*.csv
+*.tsv
+*.sqlite
+*.sqlite3
+local_data/
+reports/
+career_delivery*/
+delivery-manifest.json
+company-sources.json
+
+# Secrets and local configuration.
+.env
+.env.*
+!.env.example

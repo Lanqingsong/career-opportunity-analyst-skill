@@ -1,0 +1,7 @@
+interface:
+  display_name: "Career Delivery Package"
+  short_description: "Build targeted resumes and an evidence-based career plan"
+  default_prompt: "Use $analyze-career-opportunities to analyze my job data and candidate materials, then deliver suitable directions, targeted resumes, interview preparation, and a 30/90/180-day plan."
+
+policy:
+  allow_implicit_invocation: true

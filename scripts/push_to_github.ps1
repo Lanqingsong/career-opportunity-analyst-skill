@@ -34,7 +34,11 @@ function Get-GitText {
 function Get-ItemCount {
     param([AllowNull()][object]$Items)
 
-    return @($Items).Count
+    if ($null -eq $Items) {
+        return 0
+    }
+
+    return @($Items | Where-Object { $null -ne $_ -and "$_".Length -gt 0 }).Count
 }
 
 function Get-GitDir {

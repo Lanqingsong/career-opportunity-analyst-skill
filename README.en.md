@@ -2,33 +2,37 @@
 
 [简体中文](README.md) | [English](README.en.md)
 
-A local-agent skill for career opportunity analysis. It can be used with Codex, WorkBuddy, Claude Code, or any local agent that can read repository files. Codex is one supported environment, not the whole point of the project.
+A Skill for job seekers who want to make better career-opportunity decisions. Recruiting platforms are not very fair to candidates: it is hard to tell which companies are actually suitable, and even harder to know how to close role gaps, explain experience clearly, and spend application effort on roles that deserve it.
 
-The job is simple: help a user understand who they are, what they want, which companies are worth joining, whether the role has a future, how many resume versions are needed, and how to prepare for interviews without leaking confidential work.
+This Skill can be used inside Codex, WorkBuddy, Claude Code, or any local Agent workflow that can read local files.
+
+It puts the core questions in one place: who you are, what you want, which companies are worth considering, whether the opportunity is healthy for your development, how the resume should be written, and how the interview story should be prepared.
 
 ## Positioning
 
-This is not a resume-polishing template and not a generic job scorecard. It is a local career analysis workflow with three priorities:
+This Skill is not a professional resume-polishing template and not a simple job scorecard. It works more like a career-analysis assistant, with three priorities:
 
-1. Discover the user's real needs and experience: goals, preferences, concerns, actual contribution, public evidence, and confidentiality boundaries.
-2. Research company and career outlook first: institutional views, funding, investors, industry reports, customer cases, business prospects, role future, work pressure, promotion room, growth environment, and team culture.
-3. Then decide role fit: target directions, shortlisted opportunities, resume versions, interview preparation, and 30/90/180-day improvement plan.
+1. Clarify user needs and experience: goals, preferences, concerns, real experience, public evidence, and confidentiality boundaries.
+2. Look at company and career outlook first: development space, business quality, role future, work pressure, promotion room, growth environment, and team culture.
+3. Then handle role matching: directions, opportunities, resume versions, interview material, and a 30/90/180-day improvement plan.
 
-Company research here does not mean only checking whether the company legally exists. Internet research cannot prove the full truth of a company. The useful work is to combine signals: institutional views, funding history, investor quality, industry reports, customer cases, hiring changes, forum feedback, and employee reviews. Together they help judge whether the company and role are worth the user's time.
+Company research here answers the questions candidates actually care about: is this company worth applying to, can I grow after joining, will the work consume too much, and does the role have a future?
+
+The research is limited to public internet information and what the Agent can access. Its truthfulness still needs to be checked by the user. It is not an audit or a guarantee; it is a way to organize multiple signals into a clearer decision.
 
 ## Recommended Companion Tool
 
 Recommended companion tool: the Chrome extension [Lanqingsong/job-page-extractor](https://github.com/Lanqingsong/job-page-extractor).
 
-The extension is not meant for blind bulk scraping. The intended workflow is human-in-the-loop: the user browses job boards, adds personally interesting roles to a candidate pool, and exports that pool as CSV/JSON. The local agent then does the deeper analysis.
+The extension lets users add interesting roles to a candidate pool while browsing job sites, then export that pool as CSV/JSON. Human interest filters the first layer; the local Agent does the deeper analysis.
 
 Recommended flow:
 
-1. Browse job boards normally.
+1. Browse job sites normally.
 2. Add interesting roles to the candidate pool with the `job-page-extractor` Chrome extension.
-3. Export candidate roles as CSV/JSON.
-4. Give the job file, resume, notes, preferences, and confidentiality boundaries to the local agent.
-5. Ask the agent to run `$analyze-career-opportunities`.
+3. Export the candidate roles as CSV/JSON.
+4. Give the job file, resume, notes, preferences, and confidentiality boundaries to the local Agent.
+5. Use `$analyze-career-opportunities` to research company and career outlook, screen opportunities, plan resume versions, prepare interviews, and build an improvement plan.
 
 The extension is optional. A manually prepared CSV also works. Start from [assets/job-input-template.csv](assets/job-input-template.csv).
 
@@ -42,7 +46,7 @@ Example prompt:
 
 ```text
 Use $analyze-career-opportunities. Read my job CSV, resume, and candidate notes.
-First clarify my real needs, experience, preferences, and confidentiality boundaries. Then research company and career outlook for the roles in the job file, focusing on institutional views, funding history, investors, industry reports, customer cases, business prospects, role growth, work pressure, promotion room, learning environment, team culture, and forum/community feedback. After that, summarize the market, choose suitable directions, shortlist roles, decide how many resume versions are needed, draft those versions, prepare interview material, and create a 30/90/180-day improvement plan.
+First clarify my real needs, experience, preferences, and confidentiality boundaries. Then research company and career outlook for the roles in the job file, focusing on business prospects, funding, institutional views, role growth, work pressure, promotion room, team culture, and forum/community feedback. After that, summarize the job market, choose suitable directions, shortlist roles, decide how many resume versions are needed, draft those versions, prepare interview material, and create a 30/90/180-day improvement plan.
 Do not present planned work as completed experience. Keep confidential work safely abstract.
 ```
 
@@ -50,37 +54,36 @@ Do not present planned work as completed experience. Keep confidential work safe
 
 A complete run usually includes:
 
-1. User needs profile: location, industry, compensation, workload, company preference, and deal-breakers.
+1. User needs profile: target city, industry, compensation, workload, company preference, and deal-breakers.
 2. Experience discovery: what the user actually did, responsibility boundary, public evidence, and private evidence.
 3. Job input check: CSV/JSON field mapping, missing fields, source links, and notes.
-4. Company and career-outlook research: institutional views, funding and investors, industry reports, customer cases, business prospects, role future, work pressure, promotion room, learning environment, and team culture.
+4. Company and career-outlook research: development prospects, funding and institutional views, business quality, role growth, work pressure, promotion room, learning environment, and team culture.
 5. Job-market summary: role clusters, common requirements, differentiators, and hard filters.
-6. Suitable directions: one to three directions worth serious effort.
-7. Target opportunities: company outlook, work environment, and role fit kept separate.
-8. Resume set: the minimum number of targeted resume versions and the actual drafts.
-9. Interview preparation: HR questions, technical depth, project explanation, and confidentiality-safe answers.
+6. Suitable directions: one to three directions worth serious effort, with reasons.
+7. Target opportunities: company outlook, work environment, and role fit kept separate instead of merged into one vague score.
+8. Resume set: the minimum number of targeted resume versions and the corresponding drafts.
+9. Interview preparation: HR questions, technical depth, project story, and confidentiality-safe answers.
 10. 30/90/180-day plan: deliverables, acceptance criteria, resume-use gates, and fallback scopes.
 
 ## Company And Career-Outlook Research
 
-The local agent should do this work instead of handing it back to the user.
+Company research is not only about whether a company exists. It separates development signals from work-experience signals.
 
-The focus is not only whether the company exists. Internet research has limited truthfulness, so the goal is to build a reasonable signal set:
+| Signal Type | What It Looks At | Why It Matters |
+| --- | --- | --- |
+| Institutional views | Brokerages, consulting firms, research organizations, industry associations, industry reports | Helps judge the market and company outlook |
+| Funding and capital | Funding rounds, investor quality, shareholder background, IPO or M&A progress | Gives side evidence for capital recognition and stage potential |
+| Commercial adoption | Customer cases, partners, government projects, tender records, product deployment | Shows whether the business has real-world traction |
+| Role position | Core business, growth business, support function, outsourcing delivery, temporary experiment | Helps judge whether the role can build useful experience |
+| Work experience | Overtime, delivery pressure, turnover, management style | Helps judge whether the pressure is acceptable |
+| Growth environment | Tech stack, mentor resources, business complexity, promotion path | Helps judge whether the user can grow after joining |
+| Team culture | Communication style, stability, management reviews, cross-team collaboration | Helps judge whether the long-term work environment is healthy |
 
-- Institutional views: what brokerages, consulting firms, research organizations, industry associations, or industry reports say about the company or its market.
-- Capital signals: funding rounds, investor quality, funding date, M&A, IPO progress, and shareholder background.
-- Commercial signals: customer cases, partnerships, government projects, public tenders, product adoption, and commercialization progress.
-- Business prospects: growing, shrinking, pivoting, or unclear.
-- Career prospects: whether the role builds experience recognized by the next employer.
-- Role position: core business, growth business, support function, outsourcing delivery, or temporary experiment.
-- Work pressure: overtime, delivery pressure, turnover, management style.
-- Promotion room: levels, internal mobility, mentoring, and promotion path.
-- Growth environment: tech stack, mentor resources, business complexity, and chance to produce visible results.
-- Team culture: communication style, stability, management feedback, and cross-team friction.
+Useful sources include official pages, news, funding information, investor announcements, industry reports, customer cases, forums, employee reviews, social posts, recruiting-platform comments, Maimai, Kanzhun, Glassdoor, Zhihu, Xiaohongshu, Reddit, and other public discussions.
 
-Useful sources include official pages and news, institutional reports, funding databases, investor announcements, customer cases, forums, employee reviews, social posts, recruiting-platform comments, Maimai, Kanzhun, Glassdoor, Zhihu, Xiaohongshu, Reddit, and other public discussions. Institutional views, funding records, and customer cases are strong signals for company prospects. Official sources are better for business facts. Forum and community sources are better for pressure, culture, promotion, and management signals.
+Different sources answer different questions. Official pages are useful for business facts; institutional views, funding records, and customer cases are strong signals for company outlook; forums and communities are better for pressure, culture, promotion, and management issues.
 
-Handle every source carefully. Funding does not prove a company will succeed; institutional views may be stale or biased; community posts are noisy. Use language such as "strong signal", "supporting evidence", and "needs interview verification" instead of pretending internet research proves the full truth.
+All internet information should be handled carefully. Funding does not prove a company will succeed. Institutional views may be stale or biased. A single forum complaint is not a conclusion. Better wording is "strong signal", "supporting evidence", and "needs interview verification", not "proven fact".
 
 ## Job CSV Format
 
@@ -143,7 +146,7 @@ mkdir -p ~/.codex/skills/analyze-career-opportunities
 cp -R career-opportunity-analyst-skill/* ~/.codex/skills/analyze-career-opportunities/
 ```
 
-For WorkBuddy, Claude Code, or other local agents, load this repository as a local knowledge or tool folder and tell the agent to read `SKILL.md` first, then use `references/` and `scripts/` as needed.
+For WorkBuddy, Claude Code, or other local Agents, share this repository link with them and let them install it.
 
 Agent-oriented installation instructions are in [AI_INSTALL.md](AI_INSTALL.md).
 
@@ -171,9 +174,9 @@ The scripts check structure and evidence rules. They do not replace human judgme
 
 ## Privacy
 
-Candidate material stays local by default. Do not upload resumes, job files, project details, internal data, or confidential work material to unrelated services.
+Candidate material stays local by default. Please do not upload project details, internal data, or confidential company material to AI services.
 
-For confidential experience, ask only for: problem class, responsibility boundary, constraints, trade-offs, validation method, and generalized outcomes. Do not request source code, internal datasets, logs, model weights, customer identities, unreleased algorithms, or sensitive internal metrics.
+For confidential experience, keep the abstraction at this level: problem type, personal responsibility boundary, constraints, trade-offs, validation method, and generalized result. Do not request source code, internal datasets, logs, model weights, customer identities, unreleased algorithms, or sensitive internal metrics.
 
 ## License
 

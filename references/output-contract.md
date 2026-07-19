@@ -9,7 +9,7 @@ Include:
 - input inventory, field-mapping confidence, omissions, and stale data;
 - user-needs profile, preferences, concerns, hard filters, and deal-breakers;
 - candidate fact and evidence ledger with source and disclosure state;
-- company first-gate results and company due-diligence ledger;
+- company and career-outlook research, including development prospects, role future, pressure, promotion, growth environment, team culture, and source confidence;
 - job clusters, shared requirements, differentiators, and sample size;
 - one to three direction decisions with current and reachable fit;
 - shortlisted roles with company and role judgments kept separate;
@@ -21,7 +21,7 @@ Include:
 
 ## Quick direction mode
 
-Return input quality, user-needs summary, candidate evidence summary, company first-gate results, job clusters, direction decision, critical gaps, and at most three next questions. State which complete-package sections were intentionally deferred.
+Return input quality, user-needs summary, candidate evidence summary, company and career-outlook summary, job clusters, direction decision, critical gaps, and at most three next questions. State which complete-package sections were intentionally deferred.
 
 ## Update modes
 

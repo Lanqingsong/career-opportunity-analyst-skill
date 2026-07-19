@@ -4,17 +4,17 @@
 
 A local-agent skill for career opportunity analysis. It can be used with Codex, WorkBuddy, Claude Code, or any local agent that can read repository files. Codex is one supported environment, not the whole point of the project.
 
-The job is simple: help a user understand who they are, what they want, whether the companies are worth attention, which roles deserve effort, how many resume versions are needed, and how to prepare for interviews without leaking confidential work.
+The job is simple: help a user understand who they are, what they want, which companies are worth joining, whether the role has a future, how many resume versions are needed, and how to prepare for interviews without leaking confidential work.
 
 ## Positioning
 
 This is not a resume-polishing template and not a generic job scorecard. It is a local career analysis workflow with three priorities:
 
 1. Discover the user's real needs and experience: goals, preferences, concerns, actual contribution, public evidence, and confidentiality boundaries.
-2. Do company due diligence first: identity, business, product, risk signals, and whether the role belongs to the company's real business.
+2. Research company and career outlook first: business prospects, role future, work pressure, promotion room, growth environment, and team culture.
 3. Then decide role fit: target directions, shortlisted opportunities, resume versions, interview preparation, and 30/90/180-day improvement plan.
 
-Company research is not an optional step after shortlisting. It is the first gate. If the company is not worth attention, role matching and resume tailoring should not consume much time.
+Company research here does not mean only checking whether the company legally exists. That is only a small baseline check. The useful question is whether the company and role are worth the user's time and whether joining would help or hurt the user's career.
 
 ## Recommended Companion Tool
 
@@ -42,7 +42,7 @@ Example prompt:
 
 ```text
 Use $analyze-career-opportunities. Read my job CSV, resume, and candidate notes.
-First clarify my real needs, experience, preferences, and confidentiality boundaries. Then research the companies in the job file and decide which companies deserve attention. After that, summarize the market, choose suitable directions, shortlist roles, decide how many resume versions are needed, draft those versions, prepare interview material, and create a 30/90/180-day improvement plan.
+First clarify my real needs, experience, preferences, and confidentiality boundaries. Then research company and career outlook for the roles in the job file, focusing on business prospects, role growth, work pressure, promotion room, learning environment, team culture, and forum/community feedback. After that, summarize the market, choose suitable directions, shortlist roles, decide how many resume versions are needed, draft those versions, prepare interview material, and create a 30/90/180-day improvement plan.
 Do not present planned work as completed experience. Keep confidential work safely abstract.
 ```
 
@@ -53,27 +53,31 @@ A complete run usually includes:
 1. User needs profile: location, industry, compensation, workload, company preference, and deal-breakers.
 2. Experience discovery: what the user actually did, responsibility boundary, public evidence, and private evidence.
 3. Job input check: CSV/JSON field mapping, missing fields, source links, and notes.
-4. Company due diligence: identity, business, product, financing or financial condition, public risk signals, and role-business alignment.
+4. Company and career-outlook research: business prospects, role future, work pressure, promotion room, learning environment, and team culture.
 5. Job-market summary: role clusters, common requirements, differentiators, and hard filters.
 6. Suitable directions: one to three directions worth serious effort.
-7. Target opportunities: company judgment and role fit kept separate.
+7. Target opportunities: company outlook, work environment, and role fit kept separate.
 8. Resume set: the minimum number of targeted resume versions and the actual drafts.
 9. Interview preparation: HR questions, technical depth, project explanation, and confidentiality-safe answers.
 10. 30/90/180-day plan: deliverables, acceptance criteria, resume-use gates, and fallback scopes.
 
-## Company Due Diligence
+## Company And Career-Outlook Research
 
-The local agent should do company research itself instead of handing that work back to the user.
+The local agent should do this work instead of handing it back to the user.
 
-At minimum, check:
+The focus is not only whether the company exists. The useful questions are:
 
-- Whether the company identity and hiring entity are clear.
-- What the company actually sells or operates.
-- Whether the role is tied to core business, internal support, outsourcing delivery, or speculative hiring.
-- Recent financing, growth, layoffs, penalties, lawsuits, shutdowns, or business contraction.
-- Whether public evidence is enough. If not, mark the conclusion as `incomplete` instead of inventing certainty.
+- Business prospects: growing, shrinking, pivoting, or unclear.
+- Career prospects: whether the role builds experience recognized by the next employer.
+- Role position: core business, growth business, support function, outsourcing delivery, or temporary experiment.
+- Work pressure: overtime, delivery pressure, turnover, management style.
+- Promotion room: levels, internal mobility, mentoring, and promotion path.
+- Growth environment: tech stack, mentor resources, business complexity, and chance to produce visible results.
+- Team culture: communication style, stability, management feedback, and cross-team friction.
 
-A high-confidence company conclusion needs at least two sources from different domains. It should include an official, regulatory, annual-report, or audited source, plus independent reporting when possible.
+Useful sources include official pages and news, but also forums, employee reviews, social posts, recruiting-platform comments, Maimai, Kanzhun, Glassdoor, Zhihu, Xiaohongshu, Reddit, and other public discussions. Official sources are better for business facts. Forum and community sources are better for pressure, culture, promotion, and management signals.
+
+Handle community sources carefully. Look for repeated patterns across independent posts; do not treat a single complaint as a conclusion. If coverage is weak, mark the result as `incomplete` or `watch`.
 
 ## Job CSV Format
 

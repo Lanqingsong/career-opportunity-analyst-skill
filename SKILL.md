@@ -1,6 +1,6 @@
 ---
 name: analyze-career-opportunities
-description: "Guide a local AI agent through career opportunity analysis from job CSV/JSON, manually prepared job tables, or candidate-role exports from the job-page-extractor Chrome extension plus resume material, candidate notes, projects, preferences, concerns, and corrections. Use for job selection, company due diligence, user-needs and experience discovery, career-direction analysis, resume targeting or rewriting, interview preparation, capability-gap assessment, and 30/90/180-day career plans. Treat company research as a first gate, not an optional step after role shortlisting."
+description: "Guide a local AI agent through career opportunity analysis from job CSV/JSON, manually prepared job tables, or candidate-role exports from the job-page-extractor Chrome extension plus resume material, candidate notes, projects, preferences, concerns, and corrections. Use for job selection, company and career-outlook research, user-needs and experience discovery, career-direction analysis, resume targeting or rewriting, interview preparation, capability-gap assessment, and 30/90/180-day career plans. Research company prospects, role future, work pressure, promotion room, growth environment, team culture, and public forum or community signals before final role ranking."
 ---
 
 # Analyze Career Opportunities
@@ -13,7 +13,7 @@ Produce these outputs when the available material supports them:
 
 1. user-needs profile and decision constraints;
 2. candidate fact and evidence ledger;
-3. company due-diligence ledger and company-first gate;
+3. company and career-outlook research ledger;
 4. job-market clusters and requirement map;
 5. one to three suitable career directions;
 6. target companies and roles;
@@ -30,8 +30,8 @@ Produce these outputs when the available material supports them:
 - Ask no more than three high-decision-value questions per round. Do not repeat answered questions. Continue partial analysis with unresolved items marked `unknown`.
 - Trace every important recommendation and resume claim to candidate facts, job requirements, preferences, or public company sources.
 - Show concise auditable reasoning summaries. Do not expose or claim to expose private chain-of-thought.
-- Keep company quality, current fit, six-month reachable fit, evidence strength, and preference compatibility separate.
-- Treat company due diligence as a first gate. Do not wait until final role ranking to identify obvious company identity, business, hiring-entity, or public-risk problems.
+- Keep company outlook, career prospects, work environment, current fit, six-month reachable fit, evidence strength, and preference compatibility separate.
+- Research company and career outlook before final role ranking. Do not reduce company research to legal identity or business verification; include development prospects, role future, pressure, promotion, learning environment, team culture, and community feedback.
 - Use the current local agent's available web or browser tools for public company research. Never ask the user for a search engine, endpoint, or search API key.
 - Prefer Chinese output unless the user asks for another language.
 
@@ -55,15 +55,15 @@ Read `references/candidate-interview.md` for follow-up selection and `references
 
 Convert candidate material into fact, responsibility, technical action, result, evidence, and disclosure boundary. Keep independent contribution separate from listed authorship or team attribution. Treat the latest explicit correction as current while retaining the contradiction as an audit note.
 
-### 4. Run company due diligence as the first gate
+### 4. Research company and career outlook
 
-Resolve company identity and hiring entity for every company that appears in the user's candidate pool. Triage all companies first for identity clarity, business fit, public risk signals, and role-business alignment. Deep-research high-interest, high-fit, or unclear companies before final ranking. If a company fails the first gate, explain the reason and avoid spending effort on role polishing unless the user explicitly wants it.
+Research every company that appears in the user's candidate pool before final ranking. Basic identity and hiring-entity checks are only the baseline. The useful work is to judge development prospects, role future, career pressure, promotion room, growth environment, team culture, and role-business alignment.
 
-Use official or regulatory sources plus independent coverage for high-confidence conclusions. Mark weak coverage as incomplete rather than negative. Read `references/company-research.md` and run `scripts/audit_company_sources.py` before a high-confidence company claim.
+Use official and independent sources for business facts. Use forums, employee reviews, social posts, recruiting-platform comments, and other public community signals for pressure, promotion, management, growth, and team-culture patterns. Treat community sources as pattern evidence, not single-post proof. Mark weak coverage as incomplete or watch rather than negative. Read `references/company-research.md` and run `scripts/audit_company_sources.py` before a high-confidence company claim.
 
 ### 5. Build market and direction clusters
 
-Group jobs by responsibility and capability combination after the company-first gate, not by title alone. Extract shared requirements, differentiators, hard filters, compensation and location constraints, and evidence expectations. Base direction recommendations on clusters, not one unusual job.
+Group jobs by responsibility and capability combination after company and career-outlook research, not by title alone. Extract shared requirements, differentiators, hard filters, compensation and location constraints, and evidence expectations. Base direction recommendations on clusters, not one unusual job.
 
 Read `references/scoring.md` for score separation, gap classes, and direction gates.
 
@@ -103,7 +103,7 @@ Fix errors rather than weakening the facts, sources, or audit rules. Clearly lab
 
 ## Delivery Modes
 
-- **Quick direction**: user-needs profile, candidate ledger, company first-gate result, job clusters, direction decision, critical gaps, and next questions.
+- **Quick direction**: user-needs profile, candidate ledger, company and career-outlook summary, job clusters, direction decision, critical gaps, and next questions.
 - **Complete package**: all nine outputs, including targeted resumes and 30/90/180-day plan.
 - **Resume update**: preserve the existing ledger and direction decision; revise only affected resumes and interview evidence.
 - **Plan update**: ingest new evidence or execution results; revise affected gaps and tasks without rewriting completed history.
@@ -116,7 +116,7 @@ Default to the complete package when the user asks for a full analysis, final ma
 - Candidate discovery: `references/candidate-interview.md`
 - Privacy and confidential work: `references/privacy.md`
 - Direction, scores, and gaps: `references/scoring.md`
-- Company sources: `references/company-research.md`
+- Company and career-outlook research: `references/company-research.md`
 - Resume strategy and claims: `references/resume-delivery.md`
 - Interview and disclosure preparation: `references/interview-delivery.md`
 - 30/90/180-day planning: `references/growth-plan.md`

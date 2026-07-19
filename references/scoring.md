@@ -4,8 +4,10 @@ Keep scores separate.
 
 ## Required Score Dimensions
 
-- company quality
-- company first-gate status
+- company development outlook
+- role career value
+- work pressure and culture risk
+- promotion and growth environment
 - current role fit
 - future reachable fit
 - evidence coverage
@@ -13,7 +15,7 @@ Keep scores separate.
 
 Hard filters and risk flags must remain visible and must not be hidden by a high aggregate score.
 
-Company first-gate status comes before role-fit ranking. A strong role match does not compensate for an unresolved company identity, a hiring-entity mismatch, a user deal-breaker, or a material public-risk flag.
+Company and career-outlook research comes before role-fit ranking. A strong role match does not compensate for poor career value, unmanageable pressure, weak growth environment, a user deal-breaker, or a material unresolved risk.
 
 ## Gap Types
 

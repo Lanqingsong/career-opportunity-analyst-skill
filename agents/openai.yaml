@@ -1,7 +1,7 @@
 interface:
   display_name: "Career Opportunity Analyst"
-  short_description: "Research company outlook, work environment, role fit, resumes, and interviews"
-  default_prompt: "Use $analyze-career-opportunities to clarify my needs and experience, research company prospects, role future, pressure, promotion, growth environment, and team culture, then choose target roles, draft resume versions, prepare interviews, and build a 30/90/180-day plan."
+  short_description: "Research company signals, work environment, role fit, resumes, and interviews"
+  default_prompt: "Use $analyze-career-opportunities to clarify my needs and experience, research institutional views, funding, investors, customer cases, company prospects, role future, pressure, promotion, growth environment, and team culture, then choose target roles, draft resume versions, prepare interviews, and build a 30/90/180-day plan."
 
 policy:
   allow_implicit_invocation: true

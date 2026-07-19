@@ -86,6 +86,9 @@ Source class:
 
 - `regulatory`
 - `official`
+- `institutional`
+- `capital`
+- `customer`
 - `independent`
 - `aggregator`
 - `community`
@@ -95,5 +98,5 @@ Source class:
 - Every reference ID must resolve.
 - Resume claims may use only eligible facts and safe disclosure levels.
 - Every learning task must reference a gap and contain a deliverable, acceptance criteria, and resume-use gate.
-- Every high-confidence company business claim must have at least two sources from different domains, including official/regulatory and independent coverage. Workplace, pressure, promotion, and culture claims may use community sources, but must be phrased as patterns or signals unless strongly corroborated.
+- Every high-confidence company business claim must have at least two sources from different domains, including official/regulatory and independent, institutional, capital, or customer coverage. Workplace, pressure, promotion, and culture claims may use community sources, but must be phrased as patterns or signals unless strongly corroborated. Financing, investor, and institutional views are strong development signals, not proof of future success.
 - Unknown or planned facts may inform questions and plans but cannot support completed resume claims.

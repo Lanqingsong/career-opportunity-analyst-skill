@@ -5,6 +5,8 @@ Keep scores separate.
 ## Required Score Dimensions
 
 - company development outlook
+- institutional and capital signal
+- commercial adoption signal
 - role career value
 - work pressure and culture risk
 - promotion and growth environment

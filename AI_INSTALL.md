@@ -94,7 +94,7 @@ For WorkBuddy, Claude Code, or another local agent:
 3. Instruct the agent to read `SKILL.md` before acting.
 4. Let the agent load reference files only as needed:
    - `references/candidate-interview.md` for user-needs and experience discovery.
-   - `references/company-research.md` for company outlook, role future, pressure, promotion, growth environment, team culture, and community-signal research.
+   - `references/company-research.md` for institutional views, financing, investors, customer cases, company outlook, role future, pressure, promotion, growth environment, team culture, and community-signal research.
    - `references/schemas.md` for CSV/JSON job input mapping.
    - `references/privacy.md` for confidential work.
 5. Let the agent run scripts locally when useful.
@@ -104,10 +104,10 @@ For WorkBuddy, Claude Code, or another local agent:
 After installation or loading, ask the local agent:
 
 ```text
-使用 $analyze-career-opportunities，说明这个 Skill 需要哪些输入、会交付哪些内容、它如何调研公司发展前途、职业前景、职业压力、晋升空间、成长环境、团队氛围和论坛/社区反馈，如何挖掘用户需求和经历，以及如何避免把 planned 工作写成 completed 经历。不要读取我的本地私人文件。
+使用 $analyze-career-opportunities，说明这个 Skill 需要哪些输入、会交付哪些内容、它如何调研机构观点、融资记录、投资方、客户案例、公司发展前途、职业前景、职业压力、晋升空间、成长环境、团队氛围和论坛/社区反馈，如何挖掘用户需求和经历，以及如何避免把 planned 工作写成 completed 经历。不要读取我的本地私人文件。
 ```
 
-The expected answer should mention job CSV/JSON, candidate material, preferences, confidentiality boundaries, user-needs discovery, experience mining, company and career-outlook research, community-signal handling, evidence ledger, job clusters, directions, shortlisted roles, minimum resume set, interview preparation, 30/90/180-day plan, delivery manifest audit, and the rule that planned work remains planned.
+The expected answer should mention job CSV/JSON, candidate material, preferences, confidentiality boundaries, user-needs discovery, experience mining, institutional views, funding and investor signals, customer or commercialization signals, company and career-outlook research, community-signal handling, evidence ledger, job clusters, directions, shortlisted roles, minimum resume set, interview preparation, 30/90/180-day plan, delivery manifest audit, and the rule that planned work remains planned.
 
 ## Full Task Prompt Template
 
@@ -117,7 +117,7 @@ The expected answer should mention job CSV/JSON, candidate material, preferences
 1. 盘点输入和字段映射；
 2. 挖掘我的真实需求、偏好、顾虑、硬性条件和经历边界；
 3. 建立候选人事实与证据台账；
-4. 调研岗位里的公司与职业前景，重点看发展前途、岗位成长性、职业压力、晋升空间、团队氛围和论坛/社区反馈；
+4. 调研岗位里的公司与职业前景，重点看机构观点、融资记录、投资方、客户案例、发展前途、岗位成长性、职业压力、晋升空间、团队氛围和论坛/社区反馈；
 5. 归纳岗位市场画像和岗位簇；
 6. 推荐 1-3 个适合方向；
 7. 筛选目标公司和岗位，并分开写公司判断与岗位匹配；
@@ -141,6 +141,6 @@ Then start a new Codex task.
 
 If another local agent does not follow the workflow, explicitly ask it to read `SKILL.md` first and to use `references/company-research.md` before ranking roles.
 
-If company or career-outlook research is weak, do not invent claims. Mark the research status as incomplete, watch, or low confidence. Official sources are useful for business facts; forums, employee reviews, and community discussions are useful for pressure, promotion, growth environment, and culture signals, but require pattern-based wording rather than single-post certainty.
+If company or career-outlook research is weak, do not invent claims. Mark the research status as incomplete, watch, or low confidence. Institutional views, financing records, investors, and customer cases are strong signals for development outlook, but not proof of future success. Official sources are useful for business facts; forums, employee reviews, and community discussions are useful for pressure, promotion, growth environment, and culture signals, but require pattern-based wording rather than single-post certainty.
 
 If resume claims fail audit, fix the claim or the fact state. Completed resume claims may use only facts whose state and disclosure level allow resume use.

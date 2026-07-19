@@ -22,7 +22,7 @@ GAP_TYPES = {
     "hard_filter", "learnable", "evidence_gap", "expression_gap",
     "preference_conflict", "unknown",
 }
-SOURCE_CLASSES = {"regulatory", "official", "independent", "aggregator", "community"}
+SOURCE_CLASSES = {"regulatory", "official", "institutional", "capital", "customer", "independent", "aggregator", "community"}
 
 
 def _items(value: dict[str, Any], key: str, issues: list[dict[str, str]]) -> list[dict[str, Any]]:

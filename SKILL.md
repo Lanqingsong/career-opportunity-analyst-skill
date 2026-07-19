@@ -1,6 +1,6 @@
 ---
 name: analyze-career-opportunities
-description: "Guide a local AI agent through career opportunity analysis from job CSV/JSON, manually prepared job tables, or candidate-role exports from the job-page-extractor Chrome extension plus resume material, candidate notes, projects, preferences, concerns, and corrections. Use for job selection, company and career-outlook research, user-needs and experience discovery, career-direction analysis, resume targeting or rewriting, interview preparation, capability-gap assessment, and 30/90/180-day career plans. Research company prospects, role future, work pressure, promotion room, growth environment, team culture, and public forum or community signals before final role ranking."
+description: "Guide a local AI agent through career opportunity analysis from job CSV/JSON, manually prepared job tables, or candidate-role exports from the job-page-extractor Chrome extension plus resume material, candidate notes, projects, preferences, concerns, and corrections. Use for job selection, company and career-outlook research, user-needs and experience discovery, career-direction analysis, resume targeting or rewriting, interview preparation, capability-gap assessment, and 30/90/180-day career plans. Research institutional views, funding, investors, industry reports, customer cases, company prospects, role future, work pressure, promotion room, growth environment, team culture, and public forum or community signals before final role ranking."
 ---
 
 # Analyze Career Opportunities
@@ -31,7 +31,7 @@ Produce these outputs when the available material supports them:
 - Trace every important recommendation and resume claim to candidate facts, job requirements, preferences, or public company sources.
 - Show concise auditable reasoning summaries. Do not expose or claim to expose private chain-of-thought.
 - Keep company outlook, career prospects, work environment, current fit, six-month reachable fit, evidence strength, and preference compatibility separate.
-- Research company and career outlook before final role ranking. Do not reduce company research to legal identity or business verification; include development prospects, role future, pressure, promotion, learning environment, team culture, and community feedback.
+- Research company and career outlook before final role ranking. Do not reduce company research to legal identity or business verification; include institutional views, funding and investors, industry reports, customer cases, development prospects, role future, pressure, promotion, learning environment, team culture, and community feedback.
 - Use the current local agent's available web or browser tools for public company research. Never ask the user for a search engine, endpoint, or search API key.
 - Prefer Chinese output unless the user asks for another language.
 
@@ -57,9 +57,9 @@ Convert candidate material into fact, responsibility, technical action, result, 
 
 ### 4. Research company and career outlook
 
-Research every company that appears in the user's candidate pool before final ranking. Basic identity and hiring-entity checks are only the baseline. The useful work is to judge development prospects, role future, career pressure, promotion room, growth environment, team culture, and role-business alignment.
+Research every company that appears in the user's candidate pool before final ranking. Basic identity and hiring-entity checks are only the baseline. Internet research has limited truthfulness, so build a signal set rather than pretending to audit reality. Judge institutional recognition, capital backing, customer or commercialization evidence, development prospects, role future, career pressure, promotion room, growth environment, team culture, and role-business alignment.
 
-Use official and independent sources for business facts. Use forums, employee reviews, social posts, recruiting-platform comments, and other public community signals for pressure, promotion, management, growth, and team-culture patterns. Treat community sources as pattern evidence, not single-post proof. Mark weak coverage as incomplete or watch rather than negative. Read `references/company-research.md` and run `scripts/audit_company_sources.py` before a high-confidence company claim.
+Use official and independent sources for business facts. Use institutional reports, investor announcements, funding records, customer cases, government projects, and public tenders as strong signals for company prospects. Use forums, employee reviews, social posts, recruiting-platform comments, and other public community signals for pressure, promotion, management, growth, and team-culture patterns. Treat all sources as signals; funding and institutional views are strong supporting evidence, not proof of future success. Mark weak coverage as incomplete or watch rather than negative. Read `references/company-research.md` and run `scripts/audit_company_sources.py` before a high-confidence company claim.
 
 ### 5. Build market and direction clusters
 

@@ -11,7 +11,8 @@ from urllib.parse import urlparse
 
 
 TRUSTED_CLASSES = {"regulatory", "official"}
-ALLOWED_CLASSES = TRUSTED_CLASSES | {"independent", "aggregator", "community"}
+OUTLOOK_CLASSES = {"institutional", "capital", "customer"}
+ALLOWED_CLASSES = TRUSTED_CLASSES | OUTLOOK_CLASSES | {"independent", "aggregator", "community"}
 
 
 def audit_company(company: dict) -> dict:
@@ -63,6 +64,8 @@ def audit_company(company: dict) -> dict:
         issues.append("missing official or regulatory source")
     if "independent" not in classes:
         issues.append("missing independent source")
+    if not classes & OUTLOOK_CLASSES:
+        warnings.append("missing institutional, capital, or customer source; company development outlook should remain cautious")
     if "community" not in classes and "aggregator" not in classes:
         warnings.append("missing community, forum, recruiting-platform, or employee-review source; workplace pressure, promotion, and culture claims should remain low confidence")
     return {
@@ -71,6 +74,9 @@ def audit_company(company: dict) -> dict:
         "career_outlook_label": company.get("career_outlook_label", company.get("first_gate", "unknown")),
         "valid_source_count": len(valid_sources),
         "domain_count": len(domains),
+        "outlook_signal_count": sum(
+            1 for source in valid_sources if str(source.get("source_class", "")).strip() in OUTLOOK_CLASSES
+        ),
         "community_signal_count": sum(
             1 for source in valid_sources if str(source.get("source_class", "")).strip() in {"community", "aggregator"}
         ),

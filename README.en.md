@@ -11,10 +11,10 @@ The job is simple: help a user understand who they are, what they want, which co
 This is not a resume-polishing template and not a generic job scorecard. It is a local career analysis workflow with three priorities:
 
 1. Discover the user's real needs and experience: goals, preferences, concerns, actual contribution, public evidence, and confidentiality boundaries.
-2. Research company and career outlook first: business prospects, role future, work pressure, promotion room, growth environment, and team culture.
+2. Research company and career outlook first: institutional views, funding, investors, industry reports, customer cases, business prospects, role future, work pressure, promotion room, growth environment, and team culture.
 3. Then decide role fit: target directions, shortlisted opportunities, resume versions, interview preparation, and 30/90/180-day improvement plan.
 
-Company research here does not mean only checking whether the company legally exists. That is only a small baseline check. The useful question is whether the company and role are worth the user's time and whether joining would help or hurt the user's career.
+Company research here does not mean only checking whether the company legally exists. Internet research cannot prove the full truth of a company. The useful work is to combine signals: institutional views, funding history, investor quality, industry reports, customer cases, hiring changes, forum feedback, and employee reviews. Together they help judge whether the company and role are worth the user's time.
 
 ## Recommended Companion Tool
 
@@ -42,7 +42,7 @@ Example prompt:
 
 ```text
 Use $analyze-career-opportunities. Read my job CSV, resume, and candidate notes.
-First clarify my real needs, experience, preferences, and confidentiality boundaries. Then research company and career outlook for the roles in the job file, focusing on business prospects, role growth, work pressure, promotion room, learning environment, team culture, and forum/community feedback. After that, summarize the market, choose suitable directions, shortlist roles, decide how many resume versions are needed, draft those versions, prepare interview material, and create a 30/90/180-day improvement plan.
+First clarify my real needs, experience, preferences, and confidentiality boundaries. Then research company and career outlook for the roles in the job file, focusing on institutional views, funding history, investors, industry reports, customer cases, business prospects, role growth, work pressure, promotion room, learning environment, team culture, and forum/community feedback. After that, summarize the market, choose suitable directions, shortlist roles, decide how many resume versions are needed, draft those versions, prepare interview material, and create a 30/90/180-day improvement plan.
 Do not present planned work as completed experience. Keep confidential work safely abstract.
 ```
 
@@ -53,7 +53,7 @@ A complete run usually includes:
 1. User needs profile: location, industry, compensation, workload, company preference, and deal-breakers.
 2. Experience discovery: what the user actually did, responsibility boundary, public evidence, and private evidence.
 3. Job input check: CSV/JSON field mapping, missing fields, source links, and notes.
-4. Company and career-outlook research: business prospects, role future, work pressure, promotion room, learning environment, and team culture.
+4. Company and career-outlook research: institutional views, funding and investors, industry reports, customer cases, business prospects, role future, work pressure, promotion room, learning environment, and team culture.
 5. Job-market summary: role clusters, common requirements, differentiators, and hard filters.
 6. Suitable directions: one to three directions worth serious effort.
 7. Target opportunities: company outlook, work environment, and role fit kept separate.
@@ -65,8 +65,11 @@ A complete run usually includes:
 
 The local agent should do this work instead of handing it back to the user.
 
-The focus is not only whether the company exists. The useful questions are:
+The focus is not only whether the company exists. Internet research has limited truthfulness, so the goal is to build a reasonable signal set:
 
+- Institutional views: what brokerages, consulting firms, research organizations, industry associations, or industry reports say about the company or its market.
+- Capital signals: funding rounds, investor quality, funding date, M&A, IPO progress, and shareholder background.
+- Commercial signals: customer cases, partnerships, government projects, public tenders, product adoption, and commercialization progress.
 - Business prospects: growing, shrinking, pivoting, or unclear.
 - Career prospects: whether the role builds experience recognized by the next employer.
 - Role position: core business, growth business, support function, outsourcing delivery, or temporary experiment.
@@ -75,9 +78,9 @@ The focus is not only whether the company exists. The useful questions are:
 - Growth environment: tech stack, mentor resources, business complexity, and chance to produce visible results.
 - Team culture: communication style, stability, management feedback, and cross-team friction.
 
-Useful sources include official pages and news, but also forums, employee reviews, social posts, recruiting-platform comments, Maimai, Kanzhun, Glassdoor, Zhihu, Xiaohongshu, Reddit, and other public discussions. Official sources are better for business facts. Forum and community sources are better for pressure, culture, promotion, and management signals.
+Useful sources include official pages and news, institutional reports, funding databases, investor announcements, customer cases, forums, employee reviews, social posts, recruiting-platform comments, Maimai, Kanzhun, Glassdoor, Zhihu, Xiaohongshu, Reddit, and other public discussions. Institutional views, funding records, and customer cases are strong signals for company prospects. Official sources are better for business facts. Forum and community sources are better for pressure, culture, promotion, and management signals.
 
-Handle community sources carefully. Look for repeated patterns across independent posts; do not treat a single complaint as a conclusion. If coverage is weak, mark the result as `incomplete` or `watch`.
+Handle every source carefully. Funding does not prove a company will succeed; institutional views may be stale or biased; community posts are noisy. Use language such as "strong signal", "supporting evidence", and "needs interview verification" instead of pretending internet research proves the full truth.
 
 ## Job CSV Format
 
